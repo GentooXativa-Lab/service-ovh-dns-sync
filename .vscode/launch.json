@@ -1,0 +1,13 @@
+{
+    "configurations": [
+        {
+            "type": "debugpy",
+            "request": "launch",
+            "name": "Launch OVH-DNS-SYNC",
+            "program": "${workspaceFolder}/ovh-dns-sync.py",
+            "internalConsoleOptions": "neverOpen",
+            "console": "integratedTerminal",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
