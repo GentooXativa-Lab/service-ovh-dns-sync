@@ -44,6 +44,10 @@ def retrievePublicIP():
     return finalResponse
 
 def main():
+    if config["application_name"] is None or config["application_key"] is None or config["application_secret"] is None or config["consumer_key"] is None or config["endpoint"] is None:
+        print("Missing configuration, please set the following environment variables: OVH_APP_NAME, OVH_APP_KEY, OVH_APP_SECRET, OVH_APP_CONSUMERKEY, OVH_APP_ENDPOINT")
+        exit(1)
+
     client = getOvhClient()
     print("Connected to OVH API, checking records for domains: {}".format(config["domains"]))
     
@@ -73,6 +77,9 @@ def main():
         except ovh.exceptions.ResourceNotFoundError:        
             print("Zone not found for domain: {}".format(domain))
             exit(1)
+        finally:
+            print("Finished checking records for domain: {}".format(domain))
+            
 
 if __name__ == "__main__":
     main()
